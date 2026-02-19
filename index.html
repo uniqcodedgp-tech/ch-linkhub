@@ -315,7 +315,20 @@
 
         <div class="footer-uniq">
           <!-- COLOQUE SUA LOGO AQUI: src/img/uniqcode.png -->
-          <img src="src/img/uniqcode.png" alt="UniqCode Programação" class="uniq-logo">
+          <img 
+  src="src/img/uniqcode.png" 
+  alt="UniqCode Programação" 
+  class="uniq-logo"
+  style="
+    width:130px;
+    opacity:1;
+    filter: drop-shadow(0 8px 25px rgba(0,0,0,.6));
+    transition: transform .25s ease;
+  "
+  onmouseover="this.style.transform='scale(1.06)'"
+  onmouseout="this.style.transform='scale(1)'"
+>
+
 
           <!-- WHATSAPP DA UNIQCODE (NÃO ALTERA OS BOTÕES DO SITE) -->
           <a class="uniq-whatsapp" target="_blank" rel="noopener"
@@ -357,3 +370,4 @@
   </script>
 </body>
 </html>
+
