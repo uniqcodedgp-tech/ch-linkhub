@@ -89,13 +89,19 @@
 
     /* Bio otimizada para mobile (mesma linha) */
     .bio{
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-      line-height:1.35;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+  margin:0;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.35;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+
+.bio-line{
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
     }
 
     .links{
@@ -199,7 +205,10 @@
         </div>
         <div>
           <h1>Projeto CH de Skate</h1>
-          <p class="bio">Conscientização Humana • Projeto Social • Desde 1998 🛹</p>
+          <p class="bio">
+  <span class="bio-line">Conscientização Humana</span>
+  <span class="bio-line">Projeto Social • Desde&nbsp;1998&nbsp;🛹</span>
+</p>
         </div>
       </div>
 
@@ -254,3 +263,4 @@
   </main>
 </body>
 </html>
+
