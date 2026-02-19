@@ -197,24 +197,26 @@
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:8px;
+      gap:10px;
     }
 
     .footer-uniq{
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:6px;
+      gap:8px;
     }
 
+    /* LOGO UNIQCODE (CORRIGIDA E LIMPA) */
     .uniq-logo{
-      width:110px;
-      opacity:0.9;
-      transition:0.3s ease;
+      width:130px;
+      opacity:0.95;
+      filter: drop-shadow(0 8px 25px rgba(0,0,0,.6));
+      transition: transform .25s ease, opacity .25s ease;
     }
 
     .uniq-logo:hover{
-      transform:scale(1.05);
+      transform:scale(1.06);
       opacity:1;
     }
 
@@ -223,7 +225,7 @@
       text-decoration:none;
       color:rgba(255,255,255,.7);
       border:1px solid rgba(255,255,255,.15);
-      padding:5px 10px;
+      padding:6px 12px;
       border-radius:999px;
       background:rgba(255,255,255,.05);
       transition:0.2s;
@@ -276,7 +278,7 @@
           <span class="arrow">›</span>
         </a>
 
-        <!-- WHATSAPP DO PROJETO (NÃO ALTERADO) -->
+        <!-- WHATSAPP DO PROJETO (INALTERADO) -->
         <a class="btn whatsapp" target="_blank" rel="noopener"
            href="https://api.whatsapp.com/send?phone=5595991650740&text=Ol%C3%A1%2C%20vim%20pelo%20link%20do%20Projeto%20CH%20de%20Skate">
           <span class="left">
@@ -307,30 +309,22 @@
         <button type="button" id="shareBtn">📤 Compartilhar</button>
       </div>
 
-      <!-- RODAPÉ COM LOGO + WHATSAPP UNIQCODE -->
+      <!-- RODAPÉ COM UNIQCODE (LOGO CLICÁVEL) -->
       <div class="footer">
         <div>
           © 2026 Projeto CH de Skate - Criado por UniqCode Programação
         </div>
 
         <div class="footer-uniq">
-          <!-- COLOQUE SUA LOGO AQUI: src/img/uniqcode.png -->
-          <img 
-  src="src/img/uniqcode.png" 
-  alt="UniqCode Programação" 
-  class="uniq-logo"
-  style="
-    width:130px;
-    opacity:1;
-    filter: drop-shadow(0 8px 25px rgba(0,0,0,.6));
-    transition: transform .25s ease;
-  "
-  onmouseover="this.style.transform='scale(1.06)'"
-  onmouseout="this.style.transform='scale(1)'"
->
+          <!-- LOGO CLICÁVEL PARA WHATSAPP DA UNIQCODE -->
+          <a href="https://api.whatsapp.com/send?phone=5595991109917&text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Projeto%20CH%20de%20Skate"
+             target="_blank" rel="noopener">
+            <img src="src/img/uniqcode.png"
+                 alt="UniqCode Programação"
+                 class="uniq-logo">
+          </a>
 
-
-          <!-- WHATSAPP DA UNIQCODE (NÃO ALTERA OS BOTÕES DO SITE) -->
+          <!-- BOTÃO WHATSAPP UNIQCODE (SEPARADO DOS BOTÕES DO PROJETO) -->
           <a class="uniq-whatsapp" target="_blank" rel="noopener"
              href="https://api.whatsapp.com/send?phone=5595991109917&text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Projeto%20CH%20de%20Skate">
              💬 WhatsApp UniqCode
@@ -370,4 +364,3 @@
   </script>
 </body>
 </html>
-
