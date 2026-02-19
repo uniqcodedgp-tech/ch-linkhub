@@ -283,8 +283,7 @@
       </div>
 
       <!-- 📎 COPIAR LINK -->
-      <!-- 🚀 BOTÃO COMPARTILHAR (redes sociais do celular) -->
-      <button class="copy" id="shareLink" type="button">🚀 Compartilhar projeto</button>
+      <button class="copy" id="copyLink" type="button">📎 Copiar link deste hub</button>
 
       <div class="footer">
         © 2026 Projeto CH de Skate - Criado por UniqCode Programação
@@ -292,40 +291,21 @@
     </section>
   </main>
 
-<script>
-  const shareBtn = document.getElementById("shareLink");
-
-  shareBtn.addEventListener("click", async () => {
-    const url = window.location.href;
-    const title = "Projeto CH de Skate";
-    const text = "Confira o Projeto CH de Skate 🛹";
-
-    // Se o navegador suportar compartilhamento nativo (celular)
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: title,
-          text: text,
-          url: url
-        });
-      } catch (err) {
-        console.log("Compartilhamento cancelado");
+  <script>
+    const btn = document.getElementById("copyLink");
+    btn.addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(window.location.href);
+        const old = btn.textContent;
+        btn.textContent = "✅ Link copiado!";
+        setTimeout(()=>btn.textContent = old, 1400);
+      }catch(e){
+        // fallback simples
+        const old = btn.textContent;
+        btn.textContent = "⚠️ Não foi possível copiar";
+        setTimeout(()=>btn.textContent = old, 1600);
       }
-    } else {
-      // Fallback para PC (copia o link automaticamente)
-      try {
-        await navigator.clipboard.writeText(url);
-        const old = shareBtn.textContent;
-        shareBtn.textContent = "✅ Link copiado!";
-        setTimeout(() => {
-          shareBtn.textContent = old;
-        }, 1500);
-      } catch (e) {
-        alert("Copie manualmente o link: " + url);
-      }
-    }
-  });
-</script>
+    });
+  </script>
 </body>
 </html>
-
