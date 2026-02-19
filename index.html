@@ -17,6 +17,7 @@
 
     *{box-sizing:border-box}
 
+    /* VÍDEO DE FUNDO */
     #bg-video{
       position: fixed;
       top: 0;
@@ -29,6 +30,7 @@
       pointer-events: none;
     }
 
+    /* Camada escura para leitura */
     body::after{
       content: "";
       position: fixed;
@@ -69,7 +71,9 @@
     }
 
     .avatar{
-      width:74px;height:74px;border-radius:18px;
+      width:74px;
+      height:74px;
+      border-radius:18px;
       border:1px solid var(--border);
       overflow:hidden;
       flex:0 0 auto;
@@ -82,7 +86,10 @@
       display:block;
     }
 
-    h1{font-size:20px;margin:0 0 4px}
+    h1{
+      font-size:20px;
+      margin:0 0 4px;
+    }
 
     .bio{
       margin:0;
@@ -126,6 +133,7 @@
       border-color: rgba(255,255,255,.18);
     }
 
+    /* Destaque WhatsApp do Projeto */
     .btn.whatsapp{
       background: rgba(37,211,102,0.15);
       border:1px solid rgba(37,211,102,0.5);
@@ -153,7 +161,9 @@
       font-size:16px;
     }
 
-    .arrow{opacity:.75}
+    .arrow{
+      opacity:.75;
+    }
 
     .mini{
       margin-top:12px;
@@ -178,11 +188,51 @@
       background:rgba(255,255,255,.10);
     }
 
+    /* ===== FOOTER PROFISSIONAL COM UNIQCODE ===== */
     .footer{
-      margin-top:14px;
+      margin-top:18px;
       text-align:center;
       color:rgba(255,255,255,.55);
       font-size:12px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+    }
+
+    .footer-uniq{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+    }
+
+    .uniq-logo{
+      width:110px;
+      opacity:0.9;
+      transition:0.3s ease;
+    }
+
+    .uniq-logo:hover{
+      transform:scale(1.05);
+      opacity:1;
+    }
+
+    .uniq-whatsapp{
+      font-size:11px;
+      text-decoration:none;
+      color:rgba(255,255,255,.7);
+      border:1px solid rgba(255,255,255,.15);
+      padding:5px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.05);
+      transition:0.2s;
+    }
+
+    .uniq-whatsapp:hover{
+      background:rgba(37,211,102,0.15);
+      border-color:rgba(37,211,102,0.5);
+      color:#fff;
     }
   </style>
 </head>
@@ -226,6 +276,7 @@
           <span class="arrow">›</span>
         </a>
 
+        <!-- WHATSAPP DO PROJETO (NÃO ALTERADO) -->
         <a class="btn whatsapp" target="_blank" rel="noopener"
            href="https://api.whatsapp.com/send?phone=5595991650740&text=Ol%C3%A1%2C%20vim%20pelo%20link%20do%20Projeto%20CH%20de%20Skate">
           <span class="left">
@@ -253,12 +304,25 @@
         <a target="_blank" rel="noopener"
            href="https://api.whatsapp.com/send?phone=5595991650740&text=Ol%C3%A1%2C%20vim%20pelo%20link%20do%20Projeto%20CH%20de%20Skate">WhatsApp</a>
 
-        <!-- ✅ BOTÃO COMPARTILHAR -->
         <button type="button" id="shareBtn">📤 Compartilhar</button>
       </div>
 
+      <!-- RODAPÉ COM LOGO + WHATSAPP UNIQCODE -->
       <div class="footer">
-        © 2026 Projeto CH de Skate - Criado por UniqCode Programação
+        <div>
+          © 2026 Projeto CH de Skate - Criado por UniqCode Programação
+        </div>
+
+        <div class="footer-uniq">
+          <!-- COLOQUE SUA LOGO AQUI: src/img/uniqcode.png -->
+          <img src="src/img/uniqcode.png" alt="UniqCode Programação" class="uniq-logo">
+
+          <!-- WHATSAPP DA UNIQCODE (NÃO ALTERA OS BOTÕES DO SITE) -->
+          <a class="uniq-whatsapp" target="_blank" rel="noopener"
+             href="https://api.whatsapp.com/send?phone=5595991109917&text=Ol%C3%A1%2C%20vim%20pelo%20site%20do%20Projeto%20CH%20de%20Skate">
+             💬 WhatsApp UniqCode
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -271,16 +335,14 @@
 
       const shareData = {
         title: "Projeto CH de Skate 2026 🛹",
-        text: "🛹 Faça sua inscrição no Projeto CH de Skate 2026!\nProjeto social desde 1998.\nGaranta sua vaga agora:",
-        url
+        text: "🛹 Faça sua inscrição no Projeto CH de Skate 2026! Projeto social desde 1998.",
+        url: url
       };
 
       if (navigator.share) {
         try {
           await navigator.share(shareData);
-        } catch (e) {
-          // usuário cancelou
-        }
+        } catch (e) {}
       } else {
         try {
           await navigator.clipboard.writeText(url);
