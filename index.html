@@ -12,28 +12,49 @@
       --card:#12121a;
       --text:#ffffff;
       --muted:rgba(255,255,255,.75);
-      --accent:#ff6a00;
-      --accent2:#8a2be2;
       --border:rgba(255,255,255,.10);
     }
+
     *{box-sizing:border-box}
+
+    /* ===== VÍDEO DE FUNDO ===== */
+    #bg-video{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -3;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    /* Camada escura para leitura */
+    body::after{
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: rgba(11,11,15,0.65);
+      z-index: -2;
+    }
+
     body{
       margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(900px 500px at 20% 0%, rgba(138,43,226,.25), transparent 60%),
-        radial-gradient(900px 500px at 80% 10%, rgba(255,106,0,.20), transparent 60%),
-        var(--bg);
+      background: var(--bg);
       color:var(--text);
       min-height:100vh;
       display:flex;
       justify-content:center;
     }
+
     .wrap{
       width:100%;
       max-width:520px;
       padding:28px 18px 40px;
     }
+
     .card{
       background:rgba(18,18,26,.72);
       border:1px solid var(--border);
@@ -42,33 +63,51 @@
       backdrop-filter: blur(10px);
       box-shadow: 0 18px 60px rgba(0,0,0,.35);
     }
+
     .top{
       display:flex;
       gap:14px;
       align-items:center;
     }
+
     .avatar{
       width:74px;height:74px;border-radius:18px;
-      background:linear-gradient(135deg, rgba(255,106,0,.25), rgba(138,43,226,.25));
       border:1px solid var(--border);
       display:flex;align-items:center;justify-content:center;
       overflow:hidden;
       flex:0 0 auto;
     }
-    .avatar img{width:100%;height:100%;object-fit:contain;display:block}
+
+    .avatar img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      display:block
+    }
+
     h1{font-size:20px;margin:0 0 4px}
+
+    /* Bio otimizada para mobile (mesma linha) */
     .bio{
       margin:0;
       color:var(--muted);
       font-size:13px;
       line-height:1.35;
-      white-space:nowrap; /* mantém "Projeto Social • Desde 1998 🛹" na mesma linha no mobile */
+      white-space:nowrap;
       overflow:hidden;
       text-overflow:ellipsis;
     }
-    .links{margin-top:16px;display:grid;gap:10px}
+
+    .links{
+      margin-top:16px;
+      display:grid;
+      gap:10px
+    }
+
     .btn{
-      display:flex;align-items:center;justify-content:space-between;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
       text-decoration:none;
       background:rgba(255,255,255,.06);
       border:1px solid var(--border);
@@ -78,45 +117,80 @@
       font-weight:700;
       transition:.18s ease;
     }
+
     .btn:hover{
       transform: translateY(-1px);
       background:rgba(255,255,255,.09);
       border-color: rgba(255,255,255,.18);
     }
-    .left{
-      display:flex;align-items:center;gap:10px;
+
+    /* Destaque especial no WhatsApp (mais conversão) */
+    .btn.whatsapp{
+      background: rgba(37,211,102,0.15);
+      border:1px solid rgba(37,211,102,0.5);
     }
+
+    .btn.whatsapp:hover{
+      background: rgba(37,211,102,0.25);
+    }
+
+    .left{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
     .pill{
-      width:30px;height:30px;border-radius:10px;
-      display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(135deg, rgba(255,106,0,.28), rgba(138,43,226,.28));
+      width:30px;
+      height:30px;
+      border-radius:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:rgba(255,255,255,.08);
       border:1px solid var(--border);
       font-size:16px;
     }
+
     .arrow{opacity:.75}
+
     .footer{
       margin-top:14px;
       text-align:center;
       color:rgba(255,255,255,.55);
       font-size:12px;
     }
+
     .mini{
       margin-top:10px;
-      display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
     }
+
     .mini a{
       color:rgba(255,255,255,.75);
       text-decoration:none;
       border:1px solid var(--border);
-      padding:8px 10px;border-radius:999px;
+      padding:8px 10px;
+      border-radius:999px;
       background:rgba(255,255,255,.04);
       font-size:12px;
     }
-    .mini a:hover{background:rgba(255,255,255,.08)}
+
+    .mini a:hover{
+      background:rgba(255,255,255,.08)
+    }
   </style>
 </head>
 
 <body>
+  <!-- 🎬 VÍDEO DE FUNDO -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="src/video/bg.mp4" type="video/mp4">
+  </video>
+
   <main class="wrap">
     <section class="card">
       <div class="top">
@@ -125,33 +199,41 @@
         </div>
         <div>
           <h1>Projeto CH de Skate</h1>
-          <p class="bio">Consciência Humana • Projeto Social • Desde 1998 🛹</p>
+          <p class="bio">Conscientização Humana • Projeto Social • Desde 1998 🛹</p>
         </div>
       </div>
 
       <div class="links">
         <a class="btn" target="_blank" rel="noopener"
            href="https://bit.ly/chskate2026">
-          <span class="left"><span class="pill">📋</span> Formulário de Inscrição 2026</span>
+          <span class="left">
+            <span class="pill">📋</span> Formulário de Inscrição 2026
+          </span>
           <span class="arrow">›</span>
         </a>
 
         <a class="btn" target="_blank" rel="noopener"
            href="https://instagram.com/projetochskate">
-          <span class="left"><span class="pill">📸</span> Instagram Oficial</span>
+          <span class="left">
+            <span class="pill">📸</span> Instagram Oficial
+          </span>
           <span class="arrow">›</span>
         </a>
 
-        <!-- WhatsApp (número correto + mensagem automática) -->
-        <a class="btn" target="_blank" rel="noopener"
-           https://api.whatsapp.com/send?phone=5595991650740&text=Ol%C3%A1%2C%20vim%20pelo%20link%20do%20Projeto%20CH%20de%20Skate
-          <span class="left"><span class="pill">💬</span> Falar no WhatsApp</span>
+        <!-- 💬 WHATSAPP CORRIGIDO + MENSAGEM AUTOMÁTICA -->
+        <a class="btn whatsapp" target="_blank" rel="noopener"
+           href="https://api.whatsapp.com/send?phone=5595991650740&text=Ol%C3%A1%2C%20vim%20pelo%20link%20do%20Projeto%20CH%20de%20Skate">
+          <span class="left">
+            <span class="pill">💬</span> Falar no WhatsApp
+          </span>
           <span class="arrow">›</span>
         </a>
 
         <a class="btn" target="_blank" rel="noopener"
            href="https://www.youtube.com/@ProjetoCHdeSkate-v3">
-          <span class="left"><span class="pill">🎥</span> YouTube do Projeto</span>
+          <span class="left">
+            <span class="pill">🎥</span> YouTube do Projeto
+          </span>
           <span class="arrow">›</span>
         </a>
       </div>
@@ -160,12 +242,15 @@
         <a target="_blank" rel="noopener" href="https://bit.ly/chskate2026">Inscrição</a>
         <a target="_blank" rel="noopener" href="https://instagram.com/projetochskate">Instagram</a>
         <a target="_blank" rel="noopener"
-           https://api.whatsapp.com/send?phone=5595991650740&text=Ol%C3%A1%2C%20vim%20pelo%20link%20do%20Projeto%20CH%20de%20Skate
+           href="https://api.whatsapp.com/send?phone=5595991650740&text=Ol%C3%A1%2C%20vim%20pelo%20link%20do%20Projeto%20CH%20de%20Skate">
+           WhatsApp
+        </a>
       </div>
 
-      <div class="footer">© 2026 Projeto CH de Skate - Criado por UniqCode Programação</div>
+      <div class="footer">
+        © 2026 Projeto CH de Skate - Criado por UniqCode Programação
+      </div>
     </section>
   </main>
 </body>
 </html>
-
