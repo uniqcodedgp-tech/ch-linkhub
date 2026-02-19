@@ -87,21 +87,21 @@
 
     h1{font-size:20px;margin:0 0 4px}
 
-    /* Bio otimizada para mobile (mesma linha) */
+    /* Bio otimizada para mobile (duas linhas estáveis) */
     .bio{
-  margin:0;
-  color:var(--muted);
-  font-size:13px;
-  line-height:1.35;
-  display:flex;
-  flex-direction:column;
-  gap:2px;
-}
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
 
-.bio-line{
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+    .bio-line{
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
     .links{
@@ -188,6 +188,32 @@
     .mini a:hover{
       background:rgba(255,255,255,.08)
     }
+
+    /* ===== BOTÃO COPIAR LINK ===== */
+    .copy{
+      width:100%;
+      margin-top:12px;
+      background:rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      color:rgba(255,255,255,.90);
+      padding:12px 14px;
+      border-radius:14px;
+      font-weight:800;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      transition:.18s ease;
+    }
+    .copy:hover{
+      transform: translateY(-1px);
+      background:rgba(255,255,255,.09);
+      border-color: rgba(255,255,255,.18);
+    }
+    .copy:active{
+      transform: scale(.99);
+    }
   </style>
 </head>
 
@@ -206,9 +232,9 @@
         <div>
           <h1>Projeto CH de Skate</h1>
           <p class="bio">
-  <span class="bio-line">Conscientização Humana</span>
-  <span class="bio-line">Projeto Social • Desde&nbsp;1998&nbsp;🛹</span>
-</p>
+            <span class="bio-line">Conscientização Humana</span>
+            <span class="bio-line">Projeto Social • Desde&nbsp;1998&nbsp;🛹</span>
+          </p>
         </div>
       </div>
 
@@ -256,11 +282,30 @@
         </a>
       </div>
 
+      <!-- 📎 COPIAR LINK -->
+      <button class="copy" id="copyLink" type="button">📎 Copiar link deste hub</button>
+
       <div class="footer">
         © 2026 Projeto CH de Skate - Criado por UniqCode Programação
       </div>
     </section>
   </main>
+
+  <script>
+    const btn = document.getElementById("copyLink");
+    btn.addEventListener("click", async () => {
+      try{
+        await navigator.clipboard.writeText(window.location.href);
+        const old = btn.textContent;
+        btn.textContent = "✅ Link copiado!";
+        setTimeout(()=>btn.textContent = old, 1400);
+      }catch(e){
+        // fallback simples
+        const old = btn.textContent;
+        btn.textContent = "⚠️ Não foi possível copiar";
+        setTimeout(()=>btn.textContent = old, 1600);
+      }
+    });
+  </script>
 </body>
 </html>
-
