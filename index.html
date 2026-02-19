@@ -57,7 +57,15 @@
     }
     .avatar img{width:100%;height:100%;object-fit:contain;display:block}
     h1{font-size:20px;margin:0 0 4px}
-    .bio{margin:0;color:var(--muted);font-size:13px;line-height:1.35}
+    .bio{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+      white-space:nowrap; /* mantém "Projeto Social • Desde 1998 🛹" na mesma linha no mobile */
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
     .links{margin-top:16px;display:grid;gap:10px}
     .btn{
       display:flex;align-items:center;justify-content:space-between;
@@ -113,7 +121,6 @@
     <section class="card">
       <div class="top">
         <div class="avatar">
-          <!-- Troque o src pela sua logo (pode ser um link https também) -->
           <img src="src/img/logo.png" alt="Logo Projeto CH" />
         </div>
         <div>
@@ -135,12 +142,13 @@
           <span class="arrow">›</span>
         </a>
 
-        href="https://wa.me/5595991650740?text=Ol%C3%A1,%20vim%20pelo%20link%20do%20Projeto%20CH%20de%20Skate"
+        <!-- WhatsApp (número correto + mensagem automática) -->
+        <a class="btn" target="_blank" rel="noopener"
+           href="https://api.whatsapp.com/send?phone=5595991650740&amp;text=Ol%C3%A1%2C%20vim%20pelo%20link%20do%20Projeto%20CH%20de%20Skate">
           <span class="left"><span class="pill">💬</span> Falar no WhatsApp</span>
           <span class="arrow">›</span>
         </a>
 
-        <!-- Você me passa o link do YouTube depois e eu coloco -->
         <a class="btn" target="_blank" rel="noopener"
            href="https://www.youtube.com/@ProjetoCHdeSkate-v3">
           <span class="left"><span class="pill">🎥</span> YouTube do Projeto</span>
@@ -151,7 +159,8 @@
       <div class="mini" aria-label="Links rápidos">
         <a target="_blank" rel="noopener" href="https://bit.ly/chskate2026">Inscrição</a>
         <a target="_blank" rel="noopener" href="https://instagram.com/projetochskate">Instagram</a>
-        <a target="_blank" rel="noopener" href="https://wa.me/5595991650740">WhatsApp</a>
+        <a target="_blank" rel="noopener"
+           href="https://api.whatsapp.com/send?phone=5595991650740&amp;text=Ol%C3%A1%2C%20vim%20pelo%20link%20do%20Projeto%20CH%20de%20Skate">WhatsApp</a>
       </div>
 
       <div class="footer">© 2026 Projeto CH de Skate - Criado por UniqCode Programação</div>
@@ -159,9 +168,3 @@
   </main>
 </body>
 </html>
-
-
-
-
-
-
